@@ -1,0 +1,48 @@
+import random
+
+
+def play_game():
+    print("Welcome to the Number Guessing Game!")
+    name = input("Enter your name: ")
+    print(f"Hello, {name}!")
+    print('The Rules of the games are :- \n If the guessed number is lower than the randomly selected number, the user will see “too low”. \nIf the guessed number is higher than the randomly selected number, the user will see “too high”.\n When the user guesses the correct number, “you guessed it right!!” will be displayed in the output.')
+
+
+    print("I'm thinking of a number between 1 and 100. Can you guess it?")
+
+    number = random.randint(1, 100)
+    attempts = 10
+
+    while attempts > 0:
+        print(f"\nYou have {attempts} attempts left.")
+        guess = int(input("Enter your guess: "))
+
+        if guess < number:
+            print("Too low! Try guessing a higher number.")
+        elif guess > number:
+            print("Too high! Try guessing a lower number.")
+        else:
+            print(f"Congratulations, {name}! You guessed the correct number.")
+            play_again()
+            return
+
+        attempts -= 1
+
+    print("Oops! You ran out of attempts.")
+    print(f"The number I was thinking of was {number}.")
+    play_again()
+
+
+def play_again():
+    choice = input("Do you want to play again? (yes/no): ")
+
+    if choice.lower() == "yes":
+        play_game()
+    else:
+        print("Thank you for playing!")
+
+
+play_game()
+
+
+
